@@ -30,6 +30,7 @@ type cliCommand struct {
 }
 
 func main() {
+	PokeAPI.test()
 	comMap := map[string]cliCommand{
 		"help": {
 			name:        "help",
