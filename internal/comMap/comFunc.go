@@ -99,3 +99,19 @@ func commandInspect(str string) error {
 		return errors.New("inspect needs a pokemon to inspect")
 	}
 }
+
+func commandPokedex (str string) error {
+	if str == ""{
+		if len(PokeAPI.Pokedex) != 0 {
+			for _, pokemon := range PokeAPI.Pokedex{
+				fmt.Println(" - " + pokemon.Name)
+			}
+		}else{
+			fmt.Println("you have not caught that pokemon")
+		}
+		
+		return nil
+	}else{
+		return errors.New("pokedex can't take argumet")
+	}
+}

@@ -55,7 +55,6 @@ func GetLocations (action string) error {
 	data, exists = cache.Get(url)
 	
 	if !exists{
-		//fmt.Println("-----------------------running not exits stuff")
 		res, err := http.Get(url)
 
 		if err != nil {

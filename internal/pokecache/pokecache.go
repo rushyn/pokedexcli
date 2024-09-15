@@ -17,23 +17,18 @@ type Cache struct{
 }
 
 func (c Cache) Add(url string, data []byte){
-	//fmt.Println("-----------------------running cache add")
 	c.mu.Lock()
 	defer c.mu.Unlock()
 	c.data[url] = cacheEntry{createdAt: time.Now(), val: data}
 }
 
 func (c Cache) Get(url string) ([]byte, bool) {
-	//fmt.Println("-----------------------get first line")
 	c.mu.Lock()
 	defer c.mu.Unlock()
-	//fmt.Println("-----------------------get after lock")
 	data, exists := c.data[url]
 	if exists{
-		//fmt.Println("-----------------------get exists")
 		return data.val, true
 	}
-	//fmt.Println("-----------------------get not exist")
 	return []byte{}, false
 }
 
@@ -43,9 +38,6 @@ func (c Cache) reapLoop(wait time.Duration){
 		c.mu.Lock()
 		for key, item := range c.data{
 			if currentTime.Sub(item.createdAt) > (wait){
-				//fmt.Println("-----------------------deleting map keys")
-				//fmt.Println("-----------------------" + key)
-				//fmt.Println("----------------------------------------")
 				delete(c.data, key)
 			}
 		}

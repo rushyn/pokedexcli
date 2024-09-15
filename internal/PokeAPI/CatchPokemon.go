@@ -322,6 +322,7 @@ func CatchPokemon (str string) error {
 	if pmon.BaseExperience < rand.IntN(250){
 		fmt.Println(str + " was caught!!")
 		Pokedex[str] = pmon
+		fmt.Println("You may now inspect it with the inspect command.")
 	}else{
 		fmt.Println(str + " escaped!")
 	}
