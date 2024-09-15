@@ -35,7 +35,11 @@ var ComMap = map[string]cliCommand{
 		description: "Find the pokemoan",
 		Callback:    commandExplore,
 	},
-	
+	"catch": {
+		name:        "catch ",
+		description: "Catch the pokemoan",
+		Callback:    commandCatch,
+	},
 	
 }
 

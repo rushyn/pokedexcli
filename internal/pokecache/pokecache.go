@@ -1,7 +1,6 @@
 package pokecache
 
 import (
-	"fmt"
 	"sync"
 	"time"
 )
@@ -31,7 +30,7 @@ func (c Cache) Get(url string) ([]byte, bool) {
 	//fmt.Println("-----------------------get after lock")
 	data, exists := c.data[url]
 	if exists{
-		fmt.Println("-----------------------get exists")
+		//fmt.Println("-----------------------get exists")
 		return data.val, true
 	}
 	//fmt.Println("-----------------------get not exist")

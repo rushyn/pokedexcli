@@ -61,3 +61,12 @@ func commandExplore (str string) error {
 		return errors.New("explore needs arear to explore")
 	}
 }
+
+func commandCatch(str string) error {
+	if str != ""{
+		PokeAPI.CatchPokemon(str)
+		return nil
+	}else{
+		return errors.New("catch needs a pokemon to catch")
+	}
+}
