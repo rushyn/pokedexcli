@@ -5,7 +5,7 @@ package comMap
 type cliCommand struct {
 	name        string
 	description string
-	Callback    func() error
+	Callback    func(string) error
 }
 
 
@@ -29,6 +29,11 @@ var ComMap = map[string]cliCommand{
 		name:        "mapb",
 		description: "Displays the names of previous 20 location areas",
 		Callback:    commandMapb,
+	},
+	"explore": {
+		name:        "explore",
+		description: "Find the pokemoan",
+		Callback:    commandExplore,
 	},
 	
 	

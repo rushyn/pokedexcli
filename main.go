@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/rushyn/pokedexcli/internal/comMap"
 )
@@ -16,11 +17,23 @@ func main() {
 
 	fmt.Print("Pokedex > ")
 	for scanner.Scan() {
-		valCli, exists := comMap.ComMap[scanner.Text()]
+		rawInput := scanner.Text()
+		rawInput = strings.TrimSpace(rawInput)
+		var input = strings.SplitN(rawInput, " ", 2)
+		if len(input) == 1{
+			input = append(input, "")
+		}
+		for i := range input{
+			input[i] =strings.TrimSpace(input[i])
+		}
+	
+		
+		valCli, exists := comMap.ComMap[input[0]]
+
 		if exists {
-			err := valCli.Callback()
+			err := valCli.Callback(input[1])
 			if err != nil {
-				fmt.Printf("Some is wrong err is ::: %v", err)
+				fmt.Println("Some is wrong err is ::: ", err)
 			}
 		} else {
 			println("\n!!! Invalid Command !!! try >help<\n")
