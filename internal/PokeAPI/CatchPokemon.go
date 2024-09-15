@@ -282,7 +282,7 @@ type pokemon struct {
 }
 
 
-var pokedex = map[string]pokemon{}
+var Pokedex = map[string]pokemon{}
 
 
 func CatchPokemon (str string) error {
@@ -321,7 +321,7 @@ func CatchPokemon (str string) error {
 	
 	if pmon.BaseExperience < rand.IntN(250){
 		fmt.Println(str + " was caught!!")
-		pokedex[str] = pmon
+		Pokedex[str] = pmon
 	}else{
 		fmt.Println(str + " escaped!")
 	}

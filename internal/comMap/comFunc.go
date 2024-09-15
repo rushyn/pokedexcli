@@ -70,3 +70,32 @@ func commandCatch(str string) error {
 		return errors.New("catch needs a pokemon to catch")
 	}
 }
+
+func commandInspect(str string) error {
+	if str != ""{
+		pokemon, inDex := PokeAPI.Pokedex[str]
+		if inDex{
+			fmt.Printf("Name: %v\n", pokemon.Name)
+			fmt.Printf("Height: %v\n", pokemon.Height)
+			fmt.Printf("Weight: %v\n", pokemon.Weight)
+			fmt.Println("Stats:")
+
+			for _, val := range pokemon.Stats{
+				fmt.Printf(" - %v: %v\n", val.Stat.Name, val.BaseStat)
+			}
+			fmt.Println("Types:")
+			for _, val := range pokemon.Types{
+				fmt.Printf(" - %v\n", val.Type.Name)
+			}
+
+
+
+		}else{
+			fmt.Println("you have not caught that pokemon")
+		}
+		
+		return nil
+	}else{
+		return errors.New("inspect needs a pokemon to inspect")
+	}
+}
